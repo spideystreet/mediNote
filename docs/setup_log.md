@@ -60,12 +60,20 @@ After successfully deploying Airbyte with `abctl`, we faced challenges configuri
     -   Queried the `patient_notes` collection: `db.patient_notes.find().pretty()`
     -   Confirmed the presence of 3 patient note records.
 
+## 5. Data Verification
+
+-   **MongoDB Data Verification:**
+    -   Accessed the MongoDB shell: `docker exec -it medinote-mongo mongosh`
+    -   Switched to the database: `use medinote_db`
+    -   Listed collections: `show collections`
+    -   Queried the `patient_notes` collection: `db.patient_notes.find().pretty()`
+    -   Confirmed the presence of 3 patient note records.
+
 ## Current Status
 
 All core services (MongoDB, ClickHouse, MinIO) are running via `docker-compose`. The Airbyte platform is running via `abctl`. The Airbyte MongoDB source and ClickHouse destination are successfully connected. Data has been successfully synced from MongoDB to ClickHouse.
 
 ## Next Steps
 
--   Develop the Python enrichment service to process data from MongoDB and prepare it for ClickHouse.
 -   Set up dbt for data modeling in ClickHouse.
 -   Create a main orchestration script to manage the entire pipeline.
