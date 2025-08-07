@@ -8,7 +8,7 @@ from transformers import pipeline
 # Using smaller, general-purpose models for demonstration
 # For production, consider more specialized or larger models
 summarizer = pipeline("summarization", model="sshleifer/distilbart-cnn-6-6")
-ner_recognizer = pipeline("token-classification", model="NeuronZero/MED-NER", aggregation_strategy='simple')
+ner_recognizer = pipeline("token-classification", model="blaze999/Medical-NER", aggregation_strategy='simple')
 
 def enrich_and_store_data():
     # MongoDB Connection

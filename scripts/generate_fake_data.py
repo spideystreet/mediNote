@@ -2,20 +2,44 @@ import json
 
 notes = [
     {
-        "patient_id": "101",
-        "note": "Patient John Doe, a 45-year-old male, presented to the emergency room on August 5, 2025, with severe abdominal pain, nausea, and vomiting. He reported the pain started suddenly after a heavy meal. Physical examination revealed tenderness in the right lower quadrant. Blood tests showed elevated white blood cell count. Suspected appendicitis. Dr. Smith ordered a CT scan for further evaluation. Patient has a history of hypertension and takes Lisinopril 10mg daily. No known drug allergies. Family history includes diabetes on his mother's side."
+        "patient_id": "P001",
+        "note": "Pt. (M, 68) c/o severe chest pain, radiating to L arm, started 2 hrs ago. Hx of HTN, DM. BP 160/90, HR 98. ECG shows ST elevation. Suspect MI. Dr. A. Smith. Urgent cath lab. Meds: Aspirin, Metformin. Patient also reports recent onset of shortness of breath with exertion, and occasional dizziness when standing up quickly. Family history is significant for early cardiac events. Advised strict adherence to medication and immediate return if symptoms worsen. Follow-up with cardiology in 3 days."
     },
     {
-        "patient_id": "102",
-        "note": "Patient Jane Smith, a 62-year-old female, attended her annual cardiology check-up on August 6, 2025. She has a history of coronary artery disease and underwent a stent placement in 2020. Current medications include Aspirin 81mg, Atorvastatin 20mg, and Metoprolol 50mg. ECG showed normal sinus rhythm. Blood pressure was 128/78 mmHg. Patient reports occasional mild chest discomfort during strenuous exercise but denies shortness of breath at rest. Dr. Brown advised continuing current medications and scheduled a stress test for next month. Advised to maintain a low-sodium diet."
+        "patient_id": "P002",
+        "note": "Female, 35. Routine check-up. Feeling well. No new complaints. BP 120/80. Labs pending. Advised healthy diet & exercise. Dr. B. Jones. Follow-up in 1 year. Patient expressed interest in starting a family, discussed pre-conception counseling and folic acid supplementation. No significant past medical history. Immunizations are up to date. Screened for depression, negative. Overall, a healthy young adult."
     },
     {
-        "patient_id": "103",
-        "note": "Patient Michael Johnson, a 30-year-old male, visited the clinic for a follow-up on his asthma. He reports using his albuterol inhaler 3-4 times a week, which is an increase from his last visit. He experiences wheezing primarily at night and during exercise. Peak flow readings are consistently below his personal best. Dr. Davis reviewed his inhaler technique and prescribed a new inhaled corticosteroid, Fluticasone, to be used twice daily. Advised to avoid known triggers like dust and pet dander. Scheduled a follow-up in 4 weeks to assess control."
+        "patient_id": "P003",
+        "note": "Child (F, 5) with persistent cough, fever (102F), and difficulty breathing. Parents report exposure to sick contacts at daycare. Lung sounds diminished. Dx: Bronchiolitis. Rx: Albuterol neb. Dr. C. Davis. Monitor closely. Return if worsens. Parents concerned about dehydration due to poor oral intake. Advised small, frequent sips of clear fluids. Demonstrated proper nebulizer technique. Provided educational handout on bronchiolitis management at home. Next visit PRN."
     },
     {
-        "patient_id": "104",
-        "note": "Patient Emily White, a 28-year-old female, presented with symptoms of a urinary tract infection (UTI), including dysuria, frequency, and urgency, starting 2 days ago. Urine dipstick was positive for leukocytes and nitrites. No fever or flank pain reported. Patient denies any recent sexual activity. Prescribed a 3-day course of Trimethoprim-sulfamethoxazole. Advised to drink plenty of fluids and return if symptoms worsen or do not improve within 48 hours. No significant past medical history."
+        "patient_id": "P004",
+        "note": "Mr. K. (M, 72). Post-op day 3 s/p hip replacement. Pain 4/10 on oral meds. Ambulated 50ft with assistance. Incision clean, dry, intact. PT consult ongoing. Discharge planning initiated. Dr. E. White. Patient is eager to return home but requires significant assistance with ADLs. Home health services arranged. Discussed potential complications like DVT and infection. Provided contact information for post-discharge concerns. Follow-up with orthopedic surgeon in 2 weeks."
+    },
+    {
+        "patient_id": "P005",
+        "note": "28 y/o F. New onset headaches, throbbing, unilateral, with aura. Nausea present. No fever. Neuro exam WNL. Consider migraine. Rx: Sumatriptan. Dr. F. Green. Keep headache diary. F/u 2 wks. Patient reports visual disturbances preceding headaches. Denies photophobia or phonophobia. No history of head trauma. Advised to avoid triggers such as red wine and strong perfumes. Discussed prophylactic options if headaches become more frequent or severe. Provided migraine action plan."
+    },
+    {
+        "patient_id": "P006",
+        "note": "Patient (M, 50s) here for annual physical. Smoker. Drinks socially. No major health issues. BP slightly elevated. Advised smoking cessation. Labs ordered. Dr. G. Black. Next visit: 1 year. Patient expressed reluctance to quit smoking due to stress. Discussed various cessation aids and support groups. Provided resources for stress management. Emphasized long-term health benefits. Scheduled a brief follow-up call in 1 month to check on progress."
+    },
+    {
+        "patient_id": "P007",
+        "note": "Elderly female, 88. Fall at home. No LOC. Minor abrasions to left arm. Denies pain. Full ROM. Alert & oriented x3. Daughter present. Advised fall prevention. Dr. H. Brown. Patient lives alone but has daily caregiver visits. Discussed home safety modifications, including removal of throw rugs and installation of grab bars. Recommended bone density scan due to age. Provided information on community fall prevention programs. Next visit in 6 months."
+    },
+    {
+        "patient_id": "P008",
+        "note": "Pt. (F, 42) with chronic fatigue syndrome. Reports fluctuating energy levels, brain fog, and muscle aches. Sleep quality poor. No new symptoms. Current meds: low-dose naltrexone. Dr. I. White. Continue current management. Explore CBT for chronic pain. F/u 3 months. Patient is frustrated with lack of improvement. Validated her feelings and emphasized a multidisciplinary approach. Discussed gentle exercise and pacing activities. Provided resources for support groups."
+    },
+    {
+        "patient_id": "P009",
+        "note": "Male, 29. Sports injury. Twisted ankle playing basketball. Swelling, pain, difficulty weight-bearing. X-ray negative for fracture. Dx: Ankle sprain. Rx: RICE, crutches. Dr. J. Green. F/u 1 wk. Patient is concerned about returning to sports quickly. Emphasized importance of proper healing and rehabilitation. Demonstrated ankle exercises. Advised gradual return to activity. Provided sports medicine clinic referral if no improvement."
+    },
+    {
+        "patient_id": "P010",
+        "note": "Pt. (M, 55) with new onset type 2 diabetes. A1C 8.5%. Reports increased thirst and urination. No neuropathy or retinopathy. Started Metformin 500mg BID. Dr. K. Black. Diet and exercise counseling. F/u 1 month. Patient expressed anxiety about managing diabetes. Provided detailed information on diet, blood glucose monitoring, and medication side effects. Referred to diabetes education program. Emphasized lifestyle changes are key to long-term control."
     }
 ]
 
