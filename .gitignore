@@ -212,5 +212,3 @@ clickhouse_data/
 airbyte_db_data/
 
 GEMINI.md
-reports/
-mediNote_dbt/models/enriched_patient_data.sql
