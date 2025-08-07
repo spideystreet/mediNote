@@ -1,11 +1,13 @@
 # mediNote
 
+```
  __  __          _ _ _   _       _       
-|  \/  | ___  __| (_) \ | | ___ | |_ ___ 
+|  \/  | ___  __| (_) \ | | ___ | |_ ___
 | |\/| |/ _ \/ _` | |  \| |/ _ \| __/ _ \
 | |  | |  __/ (_| | | |\  | (_) | ||  __/
 |_|  |_|\___|\__,_|_|_| \_|\___/ \__\___|
                                          
+```
 
 A cutting-edge data engineering project designed to showcase a robust, full-stack workflow for processing and analyzing unstructured healthcare data. We're transforming raw, "anarchic" patient notes into structured, actionable insights.
 
@@ -39,7 +41,7 @@ Raw Patient Notes (JSON)
   -> MongoDB 
   -> src/enrichment/enrichment_service.py 
   -> Hugging Face NER Model 
-  -> ClickHouse (enriched_patient_notes) 
+  -> ClickHouse (enriched_patient_notes)
   -> dbt Models (mediNote_dbt/models/enriched_patient_data.sql) 
   -> ClickHouse (enriched_patient_data View) 
   -> scripts/generate_patient_reports.py 
@@ -158,4 +160,4 @@ docker exec medinote-clickhouse clickhouse-client -u default --password 'passwor
 *(Replace `'password'` with your `CLICKHOUSE_PASSWORD` from `.env` if different.)*
 
 ---
-*This project is for training and demonstration purposes. Data is simulated and models are for illustrative purposes only.*
+*This project is for training and demonstration purposes. Data is simulated and models are for illustrative purposes only.
