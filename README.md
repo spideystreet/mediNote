@@ -23,30 +23,30 @@ A cutting-edge data engineering project designed to showcase a robust, full-stac
 
 -   **Data Ingestion:** Python scripts (for direct loading into MongoDB)
 -   **AI Integration:** Hugging Face Transformers (for NER and Summarization)
-    -   **NER Model:** `blaze999/Medical-NER` (for comprehensive medical entity extraction)
-    -   **Summarization Model:** `sshleifer/distilbart-cnn-6-6`
+    -   **NER Model:** `blaze999/Medical-NER` ([Hugging Face Link](https://huggingface.co/blaze999/Medical-NER))
+    -   **Summarization Model:** `sshleifer/distilbart-cnn-6-6` ([Hugging Face Link](https://huggingface.co/sshleifer/distilbart-cnn-6-6))
 -   **Data Storage:**
-    -   MongoDB (Unstructured Data Lake)
-    -   ClickHouse (Structured/Analytical Data Warehouse)
+    -   MongoDB ([`mongo:latest` Docker Image](https://hub.docker.com/_/mongo))
+    -   ClickHouse ([`clickhouse/clickhouse-server:latest` Docker Image](https://hub.docker.com/r/clickhouse/clickhouse-server))
 -   **Data Transformation:** dbt, SQL
 -   **Orchestration:** Python
 -   **Containerization:** Docker, Docker Compose
 
 ## 📈 Project Workflow (The Data Journey)
 
-```mermaid
-graph TD
-    A[Raw Patient Notes - JSON] --> B{scripts/generate_fake_data.py};
-    B --> C[data/patient_notes.json];
-    C --> D{src/ingestion/ingest_to_mongo.py};
-    D --> E[MongoDB];
-    E --> F{src/enrichment/enrichment_service.py};
-    F --> G[Hugging Face Models];
-    G --> H[ClickHouse - enriched_patient_notes];
-    H --> I{dbt Models - mediNote_dbt/models/enriched_patient_data.sql};
-    I --> J[ClickHouse - enriched_patient_data View];
-    J --> K{scripts/generate_patient_reports.py};
-    K --> L[reports/patient_ID/report_ID.md];
+```
+Raw Patient Notes (JSON) 
+  -> scripts/generate_fake_data.py 
+  -> data/patient_notes.json 
+  -> src/ingestion/ingest_to_mongo.py 
+  -> MongoDB 
+  -> src/enrichment/enrichment_service.py 
+  -> Hugging Face Models (NER & Summarization) 
+  -> ClickHouse (enriched_patient_notes) 
+  -> dbt Models (mediNote_dbt/models/enriched_patient_data.sql) 
+  -> ClickHouse (enriched_patient_data View) 
+  -> scripts/generate_patient_reports.py 
+  -> reports/patient_ID/report_ID.md
 ```
 
 ## 🚀 Getting Started

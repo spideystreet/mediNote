@@ -1,6 +1,6 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
-*.py[codz]
+*.py[codoz]
 *$py.class
 
 # C extensions
@@ -210,3 +210,5 @@ __marimo__/
 mongo_data/
 clickhouse_data/
 airbyte_db_data/
+
+GEMINI.md
