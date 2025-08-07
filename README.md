@@ -135,7 +135,7 @@ Follow these steps to run the full data engineering pipeline:
 
 5.  **Generate Patient Reports:**
     ```bash
-    ./venv/bin/python3 scripts/generate_patient_reports.py
+    python scripts/generate_patient_reports.py
     ```
     *This script connects to ClickHouse, fetches the processed data, and generates structured Markdown reports for each patient in the `reports/` directory. These reports provide a clear, human-readable summary of the original note, AI-generated summary, and all extracted medical entities.*
 
