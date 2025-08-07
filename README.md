@@ -6,8 +6,7 @@
 ██╔████╔██║█████╗  ██║  ██║██║██╔██╗ ██║██║   ██║   ██║   █████╗  
 ██║╚██╔╝██║██╔══╝  ██║  ██║██║██║╚██╗██║██║   ██║   ██║   ██╔══╝  
 ██║ ╚═╝ ██║███████╗██████╔╝██║██║ ╚████║╚██████╔╝   ██║   ███████╗
-╚═╝     ╚═╝╚══════╝╚═════╝ ╚═╝╚═╝  ╚═══╝ ╚═════╝    ╚═╝   ╚══════╝
-                                         
+╚═╝     ╚═╝╚══════╝╚═════╝ ╚═╝╚═╝  ╚═══╝ ╚═════╝    ╚═╝   ╚══════╝                                         
 ```
 
 A cutting-edge data engineering project designed to showcase a robust, full-stack workflow for processing and analyzing unstructured healthcare data. We're transforming raw, "anarchic" patient notes into structured, actionable insights.
