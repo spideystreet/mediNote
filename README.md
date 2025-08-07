@@ -9,7 +9,10 @@
 ╚═╝     ╚═╝╚══════╝╚═════╝ ╚═╝╚═╝  ╚═══╝ ╚═════╝    ╚═╝   ╚══════╝                                         
 ```
 
-A cutting-edge data engineering project designed to showcase a robust, full-stack workflow for processing and analyzing unstructured healthcare data. We're transforming raw, "anarchic" patient notes into structured, actionable insights.
+*A cutting-edge data engineering project designed to showcase a robust, full-stack workflow for processing and analyzing unstructured healthcare data. We're transforming raw, "anarchic" patient notes into structured, actionable insights.*
+
+<img width="1536" height="1024" alt="medinote" src="https://github.com/user-attachments/assets/3507106f-2177-4cc4-a87f-4f25509a002b" />
+
 
 ## 🚀 Key Objectives
 
