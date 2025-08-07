@@ -15,6 +15,6 @@ notes = [
     }
 ]
 
-with open("data/patient_notes.json", "w") as f:
+with open("../data/patient_notes.json", "w") as f:
     for note in notes:
         f.write(json.dumps(note) + "\n")

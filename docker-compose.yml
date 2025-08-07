@@ -20,7 +20,7 @@ services:
       CLICKHOUSE_PASSWORD: ${CLICKHOUSE_PASSWORD}
     ports:
       - "${CLICKHOUSE_PORT}:8123"
-      - "9000:9000"
+      - "9002:9000"
     volumes:
       - clickhouse_data:/var/lib/clickhouse
 
@@ -34,33 +34,90 @@ services:
     volumes:
       - airbyte_db_data:/var/lib/postgresql/data
 
+  airbyte-temporal-db:
+    image: postgres:13-alpine
+    container_name: medinote-airbyte-temporal-db
+    environment:
+      - POSTGRES_USER=temporal
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=temporal
+    volumes:
+      - airbyte_temporal_db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U temporal -d temporal"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  airbyte-temporal:
+    image: temporalio/auto-setup:1.20.0
+    container_name: medinote-airbyte-temporal
+    environment:
+      - DB=postgresql
+      - DB_USERNAME=temporal
+      - DB_PASSWORD=password
+      - DB_ADDRESS=airbyte-temporal-db
+      - DB_PORT=5432
+      - TEMPORAL_CLI_ADDRESS=airbyte-temporal:7233
+      - POSTGRES_SEEDS=airbyte-temporal-db:5432
+    depends_on:
+      airbyte-temporal-db:
+        condition: service_healthy
+
   airbyte-server:
     image: airbyte/server:${AIRBYTE_VERSION}
     container_name: medinote-airbyte-server
     depends_on:
       - airbyte-db
+      - airbyte-temporal
     ports:
-      - "8000:8000"
+      - "8001:8000"
     environment:
       - DATABASE_USER=docker
       - DATABASE_PASSWORD=docker
       - DATABASE_HOST=airbyte-db
       - DATABASE_PORT=5432
       - DATABASE_DB=airbyte
+      - DATABASE_URL=jdbc:postgresql://airbyte-db:5432/airbyte
+      - airbyte.workspace.root=/tmp/airbyte_workspace
+    volumes:
+      - airbyte_workspace:/tmp/airbyte_workspace
 
   airbyte-worker:
     image: airbyte/worker:${AIRBYTE_VERSION}
     container_name: medinote-airbyte-worker
     depends_on:
       - airbyte-server
+      - airbyte-temporal
     environment:
       - DATABASE_USER=docker
       - DATABASE_PASSWORD=docker
       - DATABASE_HOST=airbyte-db
       - DATABASE_PORT=5432
       - DATABASE_DB=airbyte
+      - DATABASE_URL=jdbc:postgresql://airbyte-db:5432/airbyte
+      - airbyte.workspace.root=/tmp/airbyte_workspace
+    volumes:
+      - ./data:/data
+      - airbyte_workspace:/tmp/airbyte_workspace
+
+  minio:
+    image: minio/minio:latest
+    container_name: medinote-minio
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    environment:
+      MINIO_ROOT_USER: minio_admin
+      MINIO_ROOT_PASSWORD: minio_password
+    command: server /data --console-address ":9001"
+    volumes:
+      - minio_data:/data
 
 volumes:
   mongo_data:
   clickhouse_data:
   airbyte_db_data:
+  airbyte_temporal_db_data:
+  airbyte_workspace:
+  minio_data:

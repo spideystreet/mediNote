@@ -1,0 +1,16 @@
+# Environment variables
+.env
+
+# Python
+venv/
+__pycache__/
+*.pyc
+
+# Docker
+# Ignore docker-compose data volumes if they were ever mapped locally
+mongo_data/
+clickhouse_data/
+airbyte_db_data/
+
+# OS-specific
+.DS_Store
