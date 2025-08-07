@@ -4,10 +4,6 @@
 
 > Mr. K. (M, 72). Post-op day 3 s/p hip replacement. Pain 4/10 on oral meds. Ambulated 50ft with assistance. Incision clean, dry, intact. PT consult ongoing. Discharge planning initiated. Dr. E. White. Patient is eager to return home but requires significant assistance with ADLs. Home health services arranged. Discussed potential complications like DVT and infection. Provided contact information for post-discharge concerns. Follow-up with orthopedic surgeon in 2 weeks.
 
-## Summary
-
->  Patient is eager to return home but requires significant assistance with ADLs. Discharge planning initiated . Discussed potential complications like DVT and infection . Follow-up with orthopedic surgeon in 2 weeks .
-
 ## Extracted Entities
 
 ### AGE

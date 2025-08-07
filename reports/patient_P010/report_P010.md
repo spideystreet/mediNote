@@ -4,10 +4,6 @@
 
 > Pt. (M, 55) with new onset type 2 diabetes. A1C 8.5%. Reports increased thirst and urination. No neuropathy or retinopathy. Started Metformin 500mg BID. Dr. K. Black. Diet and exercise counseling. F/u 1 month. Patient expressed anxiety about managing diabetes. Provided detailed information on diet, blood glucose monitoring, and medication side effects. Referred to diabetes education program. Emphasized lifestyle changes are key to long-term control.
 
-## Summary
-
->  Dr. K. Black started Metformin 500mg BID 1 month . Patient expressed anxiety about managing diabetes . Emphasized lifestyle changes are key to long-term control .
-
 ## Extracted Entities
 
 ### DETAILED_DESCRIPTION

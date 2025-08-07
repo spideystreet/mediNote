@@ -4,10 +4,6 @@
 
 > Elderly female, 88. Fall at home. No LOC. Minor abrasions to left arm. Denies pain. Full ROM. Alert & oriented x3. Daughter present. Advised fall prevention. Dr. H. Brown. Patient lives alone but has daily caregiver visits. Discussed home safety modifications, including removal of throw rugs and installation of grab bars. Recommended bone density scan due to age. Provided information on community fall prevention programs. Next visit in 6 months.
 
-## Summary
-
->  Elderly female, 88, lives alone but has daily caregiver visits . Discussed home safety modifications, including removal of throw rugs and installation of grab bars . Recommended bone density scan due to age . Next visit in 6 months .
-
 ## Extracted Entities
 
 ### SEX

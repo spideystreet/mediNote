@@ -4,10 +4,6 @@
 
 > Male, 29. Sports injury. Twisted ankle playing basketball. Swelling, pain, difficulty weight-bearing. X-ray negative for fracture. Dx: Ankle sprain. Rx: RICE, crutches. Dr. J. Green. F/u 1 wk. Patient is concerned about returning to sports quickly. Emphasized importance of proper healing and rehabilitation. Demonstrated ankle exercises. Advised gradual return to activity. Provided sports medicine clinic referral if no improvement.
 
-## Summary
-
->  Male, 29, is concerned about returning to sports quickly . Emphasized importance of proper healing and rehabilitation . Advised gradual return to activity. Provided sports medicine clinic referral if no improvement .
-
 ## Extracted Entities
 
 ### SEX

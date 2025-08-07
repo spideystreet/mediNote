@@ -4,10 +4,6 @@
 
 > 28 y/o F. New onset headaches, throbbing, unilateral, with aura. Nausea present. No fever. Neuro exam WNL. Consider migraine. Rx: Sumatriptan. Dr. F. Green. Keep headache diary. F/u 2 wks. Patient reports visual disturbances preceding headaches. Denies photophobia or phonophobia. No history of head trauma. Advised to avoid triggers such as red wine and strong perfumes. Discussed prophylactic options if headaches become more frequent or severe. Provided migraine action plan.
 
-## Summary
-
->  No history of head trauma. Advised to avoid triggers such as red wine and strong perfumes . Discussed prophylactic options if headaches become more frequent or severe . Provided migraine action plan .
-
 ## Extracted Entities
 
 ### AGE

@@ -1,7 +1,6 @@
 SELECT
     patient_id,
     original_note,
-    summary,
     ner_entities,
     -- Extract entity_group and word from the first element of the ner_entities array
     JSONExtractString(ner_entities, '$[0].entity_group') AS first_entity_group,

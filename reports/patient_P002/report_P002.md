@@ -4,10 +4,6 @@
 
 > Female, 35. Routine check-up. Feeling well. No new complaints. BP 120/80. Labs pending. Advised healthy diet & exercise. Dr. B. Jones. Follow-up in 1 year. Patient expressed interest in starting a family, discussed pre-conception counseling and folic acid supplementation. No significant past medical history. Immunizations are up to date. Screened for depression, negative. Overall, a healthy young adult.
 
-## Summary
-
->  Patient expressed interest in starting a family, discussed pre-conception counseling and folic acid supplementation . No significant past medical history. Immunizations are up to date . Overall, a healthy young adult.
-
 ## Extracted Entities
 
 ### SEX

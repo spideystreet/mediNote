@@ -4,10 +4,6 @@
 
 > Pt. (F, 42) with chronic fatigue syndrome. Reports fluctuating energy levels, brain fog, and muscle aches. Sleep quality poor. No new symptoms. Current meds: low-dose naltrexone. Dr. I. White. Continue current management. Explore CBT for chronic pain. F/u 3 months. Patient is frustrated with lack of improvement. Validated her feelings and emphasized a multidisciplinary approach. Discussed gentle exercise and pacing activities. Provided resources for support groups.
 
-## Summary
-
->  Dr. I. White. White is a 42-year-old woman with chronic fatigue syndrome . She is frustrated with lack of improvement . She has been diagnosed with fatigue syndrome for three months .
-
 ## Extracted Entities
 
 ### DISEASE_DISORDER

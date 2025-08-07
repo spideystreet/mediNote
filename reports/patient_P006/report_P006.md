@@ -4,10 +4,6 @@
 
 > Patient (M, 50s) here for annual physical. Smoker. Drinks socially. No major health issues. BP slightly elevated. Advised smoking cessation. Labs ordered. Dr. G. Black. Next visit: 1 year. Patient expressed reluctance to quit smoking due to stress. Discussed various cessation aids and support groups. Provided resources for stress management. Emphasized long-term health benefits. Scheduled a brief follow-up call in 1 month to check on progress.
 
-## Summary
-
->  Patient expressed reluctance to quit smoking due to stress . Discussed various cessation aids and support groups . Emphasized long-term health benefits . Scheduled a brief follow-up call in 1 month to check on progress .
-
 ## Extracted Entities
 
 ### SEX

@@ -4,10 +4,6 @@
 
 > Pt. (M, 68) c/o severe chest pain, radiating to L arm, started 2 hrs ago. Hx of HTN, DM. BP 160/90, HR 98. ECG shows ST elevation. Suspect MI. Dr. A. Smith. Urgent cath lab. Meds: Aspirin, Metformin. Patient also reports recent onset of shortness of breath with exertion, and occasional dizziness when standing up quickly. Family history is significant for early cardiac events. Advised strict adherence to medication and immediate return if symptoms worsen. Follow-up with cardiology in 3 days.
 
-## Summary
-
-> Dr. A. Smith reports recent onset of shortness of breath with exertion, and occasional dizziness when standing up quickly . Follow-up with cardiology in 3 days. Advised strict adherence to medication and return if symptoms worsen .
-
 ## Extracted Entities
 
 ### SEVERITY

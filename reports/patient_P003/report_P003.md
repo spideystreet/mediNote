@@ -4,10 +4,6 @@
 
 > Child (F, 5) with persistent cough, fever (102F), and difficulty breathing. Parents report exposure to sick contacts at daycare. Lung sounds diminished. Dx: Bronchiolitis. Rx: Albuterol neb. Dr. C. Davis. Monitor closely. Return if worsens. Parents concerned about dehydration due to poor oral intake. Advised small, frequent sips of clear fluids. Demonstrated proper nebulizer technique. Provided educational handout on bronchiolitis management at home. Next visit PRN.
 
-## Summary
-
->  Child (F, 5) with persistent cough, fever (102F), and difficulty breathing. Parents report exposure to sick contacts at daycare . Parents concerned about dehydration due to poor oral intake .
-
 ## Extracted Entities
 
 ### DETAILED_DESCRIPTION
