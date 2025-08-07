@@ -1,0 +1,66 @@
+version: '3.8'
+
+services:
+  mongo:
+    image: mongo:latest
+    container_name: medinote-mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
+    ports:
+      - "${MONGO_PORT}:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  clickhouse:
+    image: clickhouse/clickhouse-server:latest
+    container_name: medinote-clickhouse
+    environment:
+      CLICKHOUSE_USER: ${CLICKHOUSE_USER}
+      CLICKHOUSE_PASSWORD: ${CLICKHOUSE_PASSWORD}
+    ports:
+      - "${CLICKHOUSE_PORT}:8123"
+      - "9000:9000"
+    volumes:
+      - clickhouse_data:/var/lib/clickhouse
+
+  airbyte-db:
+    image: postgres:13-alpine
+    container_name: medinote-airbyte-db
+    environment:
+      - POSTGRES_USER=docker
+      - POSTGRES_PASSWORD=docker
+      - POSTGRES_DB=airbyte
+    volumes:
+      - airbyte_db_data:/var/lib/postgresql/data
+
+  airbyte-server:
+    image: airbyte/server:${AIRBYTE_VERSION}
+    container_name: medinote-airbyte-server
+    depends_on:
+      - airbyte-db
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_USER=docker
+      - DATABASE_PASSWORD=docker
+      - DATABASE_HOST=airbyte-db
+      - DATABASE_PORT=5432
+      - DATABASE_DB=airbyte
+
+  airbyte-worker:
+    image: airbyte/worker:${AIRBYTE_VERSION}
+    container_name: medinote-airbyte-worker
+    depends_on:
+      - airbyte-server
+    environment:
+      - DATABASE_USER=docker
+      - DATABASE_PASSWORD=docker
+      - DATABASE_HOST=airbyte-db
+      - DATABASE_PORT=5432
+      - DATABASE_DB=airbyte
+
+volumes:
+  mongo_data:
+  clickhouse_data:
+  airbyte_db_data:

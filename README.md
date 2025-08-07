@@ -20,32 +20,32 @@ A modern data engineering project demonstrating a full-stack workflow for proces
 
 ## Core Technologies
 
--   **Data Ingestion:** Airbyte (simulated)
+-   **Data Ingestion:** Airbyte
 -   **AI Integration:** Hugging Face
 -   **Data Storage:**
     -   MongoDB (Unstructured Data)
     -   ClickHouse (Structured/Analytical Data)
 -   **Data Transformation:** dbt, SQL
--   **Orchestration:** (To be defined, e.g., Airflow, Dagster)
+-   **Orchestration:** Python
 -   **Language:** Python
 
 ## Project Workflow
 
 ```
-[Unstructured Patient Notes] -> [Simulated Airbyte Ingestion] -> [MongoDB]
-                                                                    |
-                                                                    v
-                                                      [Python + Hugging Face]
-                                                     (NER & Summarization)
-                                                                    |
-                                                                    v
-                                                               [ClickHouse]
-                                                                    |
-                                                                    v
-                                                                  [dbt]
-                                                                    |
-                                                                    v
-                                                        [Dashboards / Analytics]
+[Local Text File] -> [Airbyte] -> [MongoDB]
+                              |
+                              v
+                [Python Enrichment Service]
+                  (Hugging Face NER & Sum.)
+                              |
+                              v
+                         [ClickHouse]
+                              |
+                              v
+                            [dbt]
+                              |
+                              v
+                  [Analytics / Dashboards]
 ```
 
 ## Getting Started
