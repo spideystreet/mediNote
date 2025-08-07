@@ -1,13 +1,11 @@
 # mediNote
 
-```
-███╗   ███╗███████╗██████╗ ██╗███╗   ██╗ ██████╗ ████████╗███████╗
-████╗ ████║██╔════╝██╔══██╗██║████╗  ██║██╔═══██╗╚══██╔══╝██╔════╝
-██╔████╔██║█████╗  ██║  ██║██║██╔██╗ ██║██║   ██║   ██║   █████╗  
-██║╚██╔╝██║██╔══╝  ██║  ██║██║██║╚██╗██║██║   ██║   ██║   ██╔══╝  
-██║ ╚═╝ ██║███████╗██████╔╝██║██║ ╚████║╚██████╔╝   ██║   ███████╗
-╚═╝     ╚═╝╚══════╝╚═════╝ ╚═╝╚═╝  ╚═══╝ ╚═════╝    ╚═╝   ╚══════╝                                         
-```
+ __  __          _ _ _   _       _       
+|  \/  | ___  __| (_) \ | | ___ | |_ ___ 
+| |\/| |/ _ \/ _` | |  \| |/ _ \| __/ _ \
+| |  | |  __/ (_| | | |\  | (_) | ||  __/
+|_|  |_|\___|\__,_|_|_| \_|\___/ \__\___|
+                                         
 
 A cutting-edge data engineering project designed to showcase a robust, full-stack workflow for processing and analyzing unstructured healthcare data. We're transforming raw, "anarchic" patient notes into structured, actionable insights.
 
@@ -41,7 +39,7 @@ Raw Patient Notes (JSON)
   -> MongoDB 
   -> src/enrichment/enrichment_service.py 
   -> Hugging Face NER Model 
-  -> ClickHouse (enriched_patient_notes)
+  -> ClickHouse (enriched_patient_notes) 
   -> dbt Models (mediNote_dbt/models/enriched_patient_data.sql) 
   -> ClickHouse (enriched_patient_data View) 
   -> scripts/generate_patient_reports.py 
@@ -71,7 +69,7 @@ Raw Patient Notes (JSON)
     pip install -r requirements.txt
     ```
 
-3.  **Start data services (MongoDB & ClickHouse):**
+3.  **Start data services (MongoDB & ClickHouse):
     ```bash
     docker-compose up -d
     ```
@@ -108,19 +106,19 @@ Follow these steps to run the full data engineering pipeline:
 
 1.  **Generate Anarchic Patient Data:**
     ```bash
-    ./venv/bin/python3 scripts/generate_fake_data.py
+    python scripts/generate_fake_data.py
     ```
     *This populates `data/patient_notes.json` with diverse, simulated patient records.*
 
 2.  **Ingest Data to MongoDB:**
     ```bash
-    ./venv/bin/python3 src/ingestion/ingest_to_mongo.py
+    python src/ingestion/ingest_to_mongo.py
     ```
     *This script reads `patient_notes.json` and loads it into the `medinote_db.patient_notes` collection in MongoDB.*
 
-3.  **Enrich Data with AI (Hugging Face):**
+3.  **Enrich Data with AI (Hugging Face):
     ```bash
-    ./venv/bin/python3 src/enrichment/enrichment_service.py
+    python src/enrichment/enrichment_service.py
     ```
     *This is where the magic happens! The script pulls data from MongoDB, uses `blaze999/Medical-NER` for entity recognition, then stores the enriched data in ClickHouse's `enriched_patient_notes` table.*
 
@@ -139,6 +137,17 @@ Follow these steps to run the full data engineering pipeline:
     ```
     *This script connects to ClickHouse, fetches the processed data, and generates structured Markdown reports for each patient in the `reports/` directory. These reports provide a clear, human-readable summary of the original note, AI-generated summary, and all extracted medical entities.*
 
+## 📊 Data Explorer UI (Streamlit)
+
+To visualize the processed data and extracted entities in an interactive UI:
+
+1.  **Ensure all pipeline steps above are completed.**
+2.  **Run the Streamlit app:**
+    ```bash
+    streamlit run src/ui/app.py
+    ```
+    *This will open a new tab in your web browser with the mediNote Data Explorer. You can select patient IDs and view their original notes and extracted entities.*
+
 ## 🔍 Verifying Data in ClickHouse
 
 You can directly query your ClickHouse database via the CLI to inspect the transformed data:
@@ -149,4 +158,4 @@ docker exec medinote-clickhouse clickhouse-client -u default --password 'passwor
 *(Replace `'password'` with your `CLICKHOUSE_PASSWORD` from `.env` if different.)*
 
 ---
-*This project is for training and demonstration purposes. Data is simulated and models are for illustrative purposes only.
+*This project is for training and demonstration purposes. Data is simulated and models are for illustrative purposes only.*

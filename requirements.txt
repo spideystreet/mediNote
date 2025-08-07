@@ -38,3 +38,4 @@ clickhouse-connect
 transformers
 torch
 boto3
+streamlit
