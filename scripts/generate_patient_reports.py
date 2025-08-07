@@ -29,14 +29,13 @@ def generate_patient_reports():
     )
 
     # Fetch data from enriched_patient_data view
-    query = "SELECT patient_id, original_note, summary, ner_entities FROM default.enriched_patient_data"
+    query = "SELECT patient_id, original_note, ner_entities FROM default.enriched_patient_data"
     result = client.query(query)
 
     for row in result.result_rows:
         patient_id = row[0]
         original_note = row[1]
-        summary = row[2]
-        ner_entities_json = row[3]
+        ner_entities_json = row[2]
 
         patient_dir = os.path.join(OUTPUT_DIR, f"patient_{patient_id}")
         os.makedirs(patient_dir, exist_ok=True)
@@ -47,8 +46,6 @@ def generate_patient_reports():
             f.write(f"# Patient Report: {patient_id}\n\n")
             f.write(f"## Original Note\n\n")
             f.write(f"> {original_note}\n\n")
-            f.write(f"## Summary\n\n")
-            f.write(f"> {summary}\n\n")
             f.write(f"## Extracted Entities\n\n")
 
             try:

@@ -46,7 +46,6 @@ def enrich_and_store_data():
         CREATE TABLE IF NOT EXISTS enriched_patient_notes (
             patient_id String,
             original_note String,
-            summary String,
             ner_entities String
         ) ENGINE = MergeTree()
         ORDER BY patient_id
@@ -75,7 +74,6 @@ def enrich_and_store_data():
         enriched_data_row = [
             patient_id,
             original_note,
-            summary,
             ner_entities
         ]
 

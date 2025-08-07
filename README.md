@@ -145,7 +145,7 @@ Follow these steps to run the full data engineering pipeline:
 You can directly query your ClickHouse database via the CLI to inspect the transformed data:
 
 ```bash
-docker exec medinote-clickhouse clickhouse-client -u default --password 'password' --query "SELECT patient_id, summary, first_entity_group, first_entity_word, ner_entities FROM default.enriched_patient_data LIMIT 5;"
+docker exec medinote-clickhouse clickhouse-client -u default --password 'password' --query "SELECT patient_id, first_entity_group, first_entity_word, ner_entities FROM default.enriched_patient_data LIMIT 5;"
 ```
 *(Replace `'password'` with your `CLICKHOUSE_PASSWORD` from `.env` if different.)*
 
