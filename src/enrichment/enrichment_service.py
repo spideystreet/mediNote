@@ -69,7 +69,7 @@ def enrich_and_store_data():
         # Perform NER
         ner_result = ner_recognizer(original_note)
         # Extract only the entity, word, and score for simplicity
-        ner_entities = json.dumps([{"entity": ent['entity'], "word": ent['word'], "score": ent['score']} for ent in ner_result])
+        ner_entities = json.dumps([{"entity": ent['entity'], "word": ent['word'], "score": float(ent['score'])} for ent in ner_result])
 
         # Prepare data for ClickHouse (as a list of values in correct order)
         enriched_data_row = [
