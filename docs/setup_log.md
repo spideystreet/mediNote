@@ -1,13 +1,12 @@
 # Setup Log for mediNote Project
 
-This document chronicles the setup process for the `mediNote` project, detailing the steps taken and the challenges encountered, along with their resolutions.
+This document chronicles the setup process for the `mediNote` project, detailing various approaches explored and challenges encountered during development, along with their resolutions. It serves as a historical record of architectural decisions and their evolution.
 
 ## 1. Initial Project Setup
 
 -   **Repository Initialization:** The project was initialized as a Git repository, and a remote was added to GitHub.
 -   **Documentation & Structure:**
     -   `README.md` was created to provide an overview of the project, its objectives, and core technologies.
-    -   `GEMINI.md` was created to serve as a log of interactions and decisions made with the Gemini AI assistant.
     -   Initial `requirements.txt` was created, and a `generate_fake_data.py` script was added to create sample patient notes.
     -   A `.gitignore` file was added to exclude sensitive files like `.env` and virtual environments.
 -   **Version Control:** All initial setup files were committed to a `dev` branch and pushed to the remote repository.
@@ -34,24 +33,16 @@ Due to persistent issues with the custom `docker-compose.yml` for Airbyte, we sh
     -   **Challenge:** Initial `abctl local install` attempts failed with `ImagePullBackOff` errors, indicating issues with the Kubernetes cluster pulling Docker images. This was primarily attributed to resource limitations in Docker Desktop.
     -   **Resolution:** Increasing allocated CPU and RAM for Docker Desktop resolved the `ImagePullBackOff` errors, and `abctl local install` completed successfully. The Airbyte UI became accessible at `http://localhost:8000`.
 
-## 4. Airbyte Source Configuration (Challenges & Solutions)
+## 4. Airbyte Source/Destination Configuration (Challenges & Solutions)
 
-After successfully deploying Airbyte with `abctl`, we faced challenges configuring the Airbyte source connector.
+After successfully deploying Airbyte with `abctl`, we faced challenges configuring Airbyte connectors to interact with our `docker-compose` services.
 
 -   **`FileNotFoundError` with Local File Source:** The Airbyte "File" source connector failed to access `patient_notes.json` from the local filesystem. This is a fundamental limitation of Kubernetes container isolation; containers cannot directly access the host's filesystem.
--   **Networking between `abctl` Kubernetes and Docker Compose:** Attempts to connect the Airbyte MongoDB source to our `docker-compose`-managed MongoDB container failed due to network isolation between the `abctl`-managed Kubernetes cluster's network and our `docker-compose` network.
-    -   **Resolution:** The `medinote-mongo` container was explicitly connected to the `kind` Docker network (the network used by `abctl`'s Kubernetes cluster). This allowed the Airbyte connector to resolve `medinote-mongo` by its service name.
+-   **Networking between `abctl` Kubernetes and Docker Compose:** Attempts to connect Airbyte connectors to our `docker-compose`-managed services (MongoDB, ClickHouse) failed due to network isolation between the `abctl`-managed Kubernetes cluster's network and our `docker-compose` network.
+    -   **Resolution:** The `medinote-mongo` and `medinote-clickhouse` containers were explicitly connected to the `kind` Docker network (the network used by `abctl`'s Kubernetes cluster). This allowed the Airbyte connectors to resolve these services by their hostnames.
 -   **MongoDB Replica Set Configuration for Airbyte:** The Airbyte MongoDB connector requires a replica set. After ensuring MongoDB was running as a replica set (even a single-node one) and disabling authorization for simplicity, the Airbyte MongoDB source connection was finally successful.
 
-    -   **ClickHouse Destination Setup:**
-        -   **Challenge:** Initial attempts to connect to `medinote-clickhouse` resulted in an "Unknown host" error, similar to MongoDB, due to network isolation.
-        -   **Resolution:** The `medinote-clickhouse` container was explicitly connected to the `kind` Docker network, allowing the Airbyte connector to resolve its hostname. The Airbyte ClickHouse destination was successfully configured using `medinote-clickhouse` as the host and `8123` as the port.
-
-    -   **ClickHouse Destination Setup:**
-        -   **Challenge:** Initial attempts to connect to `medinote-clickhouse` resulted in an "Unknown host" error, similar to MongoDB, due to network isolation.
-        -   **Resolution:** The `medinote-clickhouse` container was explicitly connected to the `kind` Docker network, allowing the Airbyte connector to resolve its hostname. The Airbyte ClickHouse destination was successfully configured using `medinote-clickhouse` as the host and `8123` as the port.
-
-## 5. Data Verification
+## 5. Data Verification (During Setup)
 
 -   **MongoDB Data Verification:**
     -   Accessed the MongoDB shell: `docker exec -it medinote-mongo mongosh`
@@ -60,20 +51,13 @@ After successfully deploying Airbyte with `abctl`, we faced challenges configuri
     -   Queried the `patient_notes` collection: `db.patient_notes.find().pretty()`
     -   Confirmed the presence of 3 patient note records.
 
-## 5. Data Verification
+## Current Project State
 
--   **MongoDB Data Verification:**
-    -   Accessed the MongoDB shell: `docker exec -it medinote-mongo mongosh`
-    -   Switched to the database: `use medinote_db`
-    -   Listed collections: `show collections`
-    -   Queried the `patient_notes` collection: `db.patient_notes.find().pretty()`
-    -   Confirmed the presence of 3 patient note records.
+This project demonstrates a direct Python-based data pipeline for ingestion and enrichment, leveraging Docker-Compose for core data services (MongoDB, ClickHouse, MinIO). Airbyte was explored during setup but is not part of the final, streamlined pipeline.
 
-## Current Status
+## Future Enhancements
 
-All core services (MongoDB, ClickHouse, MinIO) are running via `docker-compose`. The Airbyte platform is running via `abctl`. The Airbyte MongoDB source and ClickHouse destination are successfully connected. Data has been successfully synced from MongoDB to ClickHouse.
-
-## Next Steps
-
--   Set up dbt for data modeling in ClickHouse.
--   Create a main orchestration script to manage the entire pipeline.
+-   Implement a more robust orchestration layer (e.g., Apache Airflow) for scheduling and monitoring.
+-   Explore advanced dbt transformations for deeper analytical insights.
+-   Integrate a UI for data visualization and interaction.
+-   Expand AI models for more diverse medical NLP tasks.
