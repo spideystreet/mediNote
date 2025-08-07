@@ -8,7 +8,7 @@ from transformers import pipeline
 # Using smaller, general-purpose models for demonstration
 # For production, consider more specialized or larger models
 summarizer = pipeline("summarization", model="sshleifer/distilbart-cnn-6-6")
-ner_recognizer = pipeline("ner", model="dslim/bert-base-NER")
+ner_recognizer = pipeline("token-classification", model="NeuronZero/MED-NER", aggregation_strategy='simple')
 
 def enrich_and_store_data():
     # MongoDB Connection
@@ -69,7 +69,7 @@ def enrich_and_store_data():
         # Perform NER
         ner_result = ner_recognizer(original_note)
         # Extract only the entity, word, and score for simplicity
-        ner_entities = json.dumps([{"entity": ent['entity'], "word": ent['word'], "score": float(ent['score'])} for ent in ner_result])
+        ner_entities = json.dumps([{"entity": ent['entity_group'], "word": ent['word'], "score": float(ent['score'])} for ent in ner_result])
 
         # Prepare data for ClickHouse (as a list of values in correct order)
         enriched_data_row = [
