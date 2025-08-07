@@ -205,3 +205,8 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# Docker volumes (if mapped locally)
+mongo_data/
+clickhouse_data/
+airbyte_db_data/

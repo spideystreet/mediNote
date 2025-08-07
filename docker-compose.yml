@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  mongo:
+    image: mongo:latest
+    container_name: medinote-mongo
+    ports:
+      - "${MONGO_PORT}:27017"
+    volumes:
+      - mongo_data:/data/db
+    command: ["mongod", "--replSet", "rs0", "--bind_ip_all"]
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh --port 27017 --quiet
+      interval: 10s
+      timeout: 10s
+      retries: 5
+
+  clickhouse:
+    image: clickhouse/clickhouse-server:latest
+    container_name: medinote-clickhouse
+    environment:
+      CLICKHOUSE_USER: ${CLICKHOUSE_USER}
+      CLICKHOUSE_PASSWORD: ${CLICKHOUSE_PASSWORD}
+    ports:
+      - "${CLICKHOUSE_PORT}:8123"
+      - "9002:9000" # Changed from 9000 to 9002 to avoid conflict with MinIO
+    volumes:
+      - clickhouse_data:/var/lib/clickhouse
+
+  minio:
+    image: minio/minio:latest
+    container_name: medinote-minio
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    environment:
+      MINIO_ROOT_USER: minio_admin
+      MINIO_ROOT_PASSWORD: minio_password
+    command: server /data --console-address ":9001"
+    volumes:
+      - minio_data:/data
+
+volumes:
+  mongo_data:
+  clickhouse_data:
+  minio_data:
