@@ -1,11 +1,11 @@
-                                         
+# mediNote
+
 ```
-███╗   ███╗███████╗██████╗ ██╗███╗   ██╗ ██████╗ ████████╗███████╗
-████╗ ████║██╔════╝██╔══██╗██║████╗  ██║██╔═══██╗╚══██╔══╝██╔════╝
-██╔████╔██║█████╗  ██║  ██║██║██╔██╗ ██║██║   ██║   ██║   █████╗  
-██║╚██╔╝██║██╔══╝  ██║  ██║██║██║╚██╗██║██║   ██║   ██║   ██╔══╝  
-██║ ╚═╝ ██║███████╗██████╔╝██║██║ ╚████║╚██████╔╝   ██║   ███████╗
-╚═╝     ╚═╝╚══════╝╚═════╝ ╚═╝╚═╝  ╚═══╝ ╚═════╝    ╚═╝   ╚══════╝
+ __  __          _ _ _   _       _       
+|  \/  | ___  __| (_) \ | | ___ | |_ ___ 
+| |\/| |/ _ \/ _` | |  \| |/ _ \| __/ _ \
+| |  | |  __/ (_| | | |\  | (_) | ||  __/
+|_|  |_|\___|\__,_|_|_| \_|\___/ \__\___|
                                          
 ```
 
@@ -14,7 +14,7 @@ A cutting-edge data engineering project designed to showcase a robust, full-stac
 ## 🚀 Key Objectives
 
 -   **Ingest:** Seamlessly process simulated unstructured patient notes (free-text) into our data lake.
--   **Enrich:** Leverage state-of-the-art Hugging Face AI models for advanced Named Entity Recognition (NER) and intelligent summarization, extracting critical clinical information.
+-   **Enrich:** Leverage state-of-the-art Hugging Face AI models for advanced Named Entity Recognition (NER), extracting critical clinical information.
 -   **Store:** Persist raw, original data in MongoDB (our flexible NoSQL document store) and store the structured, enriched data in ClickHouse (our blazing-fast analytical column-store).
 -   **Model:** Utilize dbt (Data Build Tool) for powerful data modeling, transformation, and quality assurance, ensuring data integrity and analytical readiness.
 -   **Report:** Generate structured, human-readable reports for each patient, consolidating all extracted and enriched information.
@@ -22,9 +22,8 @@ A cutting-edge data engineering project designed to showcase a robust, full-stac
 ## 🛠️ Core Technologies
 
 -   **Data Ingestion:** Python scripts (for direct loading into MongoDB)
--   **AI Integration:** Hugging Face Transformers (for NER and Summarization)
+-   **AI Integration:** Hugging Face Transformers (for NER)
     -   **NER Model:** `blaze999/Medical-NER` ([Hugging Face Link](https://huggingface.co/blaze999/Medical-NER))
-    -   **Summarization Model:** `sshleifer/distilbart-cnn-6-6` ([Hugging Face Link](https://huggingface.co/sshleifer/distilbart-cnn-6-6))
 -   **Data Storage:**
     -   MongoDB ([`mongo:latest` Docker Image](https://hub.docker.com/_/mongo))
     -   ClickHouse ([`clickhouse/clickhouse-server:latest` Docker Image](https://hub.docker.com/r/clickhouse/clickhouse-server))
@@ -41,8 +40,8 @@ Raw Patient Notes (JSON)
   -> src/ingestion/ingest_to_mongo.py 
   -> MongoDB 
   -> src/enrichment/enrichment_service.py 
-  -> Hugging Face Models (NER & Summarization) 
-  -> ClickHouse (enriched_patient_notes) 
+  -> Hugging Face NER Model 
+  -> ClickHouse (enriched_patient_notes)
   -> dbt Models (mediNote_dbt/models/enriched_patient_data.sql) 
   -> ClickHouse (enriched_patient_data View) 
   -> scripts/generate_patient_reports.py 
@@ -123,7 +122,7 @@ Follow these steps to run the full data engineering pipeline:
     ```bash
     ./venv/bin/python3 src/enrichment/enrichment_service.py
     ```
-    *This is where the magic happens! The script pulls data from MongoDB, uses `blaze999/Medical-NER` for entity recognition and `sshleifer/distilbart-cnn-6-6` for summarization, then stores the enriched data in ClickHouse's `enriched_patient_notes` table.*
+    *This is where the magic happens! The script pulls data from MongoDB, uses `blaze999/Medical-NER` for entity recognition, then stores the enriched data in ClickHouse's `enriched_patient_notes` table.*
 
 4.  **Run dbt Models & Tests:**
     ```bash
