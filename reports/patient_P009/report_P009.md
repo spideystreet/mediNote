@@ -16,8 +16,7 @@
 
 ### DISEASE_DISORDER
 
-- injury (Score: 0.40)
-- Twisted (Score: 0.44)
+- injury Twisted (Score: 0.44)
 - fracture (Score: 0.76)
 - sprain (Score: 0.50)
 
@@ -33,8 +32,7 @@
 
 ### SIGN_SYMPTOM
 
-- Swelling (Score: 0.77)
-- pain (Score: 0.79)
+- Swelling pain (Score: 0.79)
 
 ### DIAGNOSTIC_PROCEDURE
 

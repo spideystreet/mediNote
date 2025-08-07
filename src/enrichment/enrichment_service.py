@@ -67,8 +67,41 @@ def enrich_and_store_data():
 
         # Perform NER
         ner_result = ner_recognizer(original_note)
-        # Extract only the entity, word, and score for simplicity
-        ner_entities = json.dumps([{"entity": ent['entity_group'], "word": ent['word'], "score": float(ent['score'])} for ent in ner_result])
+
+        # Aggregate contiguous entities of the same type
+        aggregated_ner_results = []
+        if ner_result:
+            current_entity = None
+            for ent in ner_result:
+                entity_type = ent['entity_group']
+                word = ent['word']
+                score = float(ent['score'])
+                start = ent['start']
+                end = ent['end']
+
+                if current_entity and \
+                   current_entity['entity_group'] == entity_type and \
+                   current_entity['end'] >= start - 1: # Check for contiguity (allowing for 0 or 1 char space)
+                    # Merge with current_entity
+                    current_entity['word'] += " " + word
+                    current_entity['end'] = end
+                    current_entity['score'] = max(current_entity['score'], score)
+                else:
+                    # Start a new entity
+                    if current_entity:
+                        aggregated_ner_results.append(current_entity)
+                    current_entity = {
+                        'entity_group': entity_type,
+                        'word': word,
+                        'score': score,
+                        'start': start,
+                        'end': end
+                    }
+            if current_entity: # Add the last entity
+                aggregated_ner_results.append(current_entity)
+
+        # Extract only the entity, word, and score for simplicity from aggregated results
+        ner_entities = json.dumps([{"entity": ent['entity_group'], "word": ent['word'], "score": ent['score']} for ent in aggregated_ner_results])
 
         # Prepare data for ClickHouse (as a list of values in correct order)
         enriched_data_row = [

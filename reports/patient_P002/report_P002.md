@@ -23,8 +23,7 @@
 
 ### SIGN_SYMPTOM
 
-- Feeling (Score: 0.42)
-- well (Score: 0.14)
+- Feeling well (Score: 0.42)
 
 ### HISTORY
 

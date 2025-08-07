@@ -8,8 +8,7 @@
 
 ### SEX
 
-- Elderly (Score: 0.10)
-- female (Score: 0.65)
+- Elderly female (Score: 0.65)
 
 ### AGE
 

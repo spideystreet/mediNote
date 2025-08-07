@@ -13,10 +13,8 @@
 
 ### SIGN_SYMPTOM
 
-- fluctuating energy levels (Score: 0.51)
-- brain fog (Score: 0.82)
-- aches (Score: 0.62)
-- Sleep quality (Score: 0.61)
+- fluctuating energy levels brain fog (Score: 0.82)
+- aches Sleep quality (Score: 0.62)
 - symptoms (Score: 0.41)
 
 ### BIOLOGICAL_STRUCTURE

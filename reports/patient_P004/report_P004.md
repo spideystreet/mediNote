@@ -29,8 +29,7 @@
 - Incision (Score: 0.38)
 - PT consult (Score: 0.35)
 - Discharge (Score: 0.47)
-- s (Score: 0.26)
-- Home health services (Score: 0.60)
+- s Home health services (Score: 0.60)
 
 ### DISEASE_DISORDER
 

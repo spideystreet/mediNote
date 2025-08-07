@@ -61,8 +61,7 @@
 
 ### MEDICATION
 
-- Aspirin (Score: 0.95)
-- Metformin (Score: 0.94)
+- Aspirin Metformin (Score: 0.95)
 
 ### FAMILY_HISTORY
 

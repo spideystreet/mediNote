@@ -14,8 +14,7 @@
 
 ### SIGN_SYMPTOM
 
-- cough (Score: 0.93)
-- fever (Score: 0.93)
+- cough fever (Score: 0.93)
 - difficulty breathing (Score: 0.91)
 - sounds (Score: 0.73)
 

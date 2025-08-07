@@ -13,8 +13,7 @@
 ### SIGN_SYMPTOM
 
 - headaches (Score: 0.94)
-- aura (Score: 0.92)
-- Nausea (Score: 0.97)
+- aura Nausea (Score: 0.97)
 - fever (Score: 0.94)
 - visual disturbances (Score: 0.94)
 - headaches (Score: 0.59)
@@ -23,13 +22,11 @@
 
 ### DETAILED_DESCRIPTION
 
-- throbbing (Score: 0.83)
-- unilateral (Score: 0.88)
+- throbbing unilateral (Score: 0.88)
 
 ### DIAGNOSTIC_PROCEDURE
 
-- Neuro exam (Score: 0.92)
-- WNL (Score: 0.79)
+- Neuro exam WNL (Score: 0.92)
 
 ### DISEASE_DISORDER
 

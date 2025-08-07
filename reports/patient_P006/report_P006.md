@@ -22,16 +22,14 @@
 
 ### HISTORY
 
-- Smoker (Score: 0.12)
-- Drinks socially (Score: 0.31)
+- Smoker Drinks socially (Score: 0.31)
 - health issues (Score: 0.22)
 - smoking (Score: 0.19)
 - support groups (Score: 0.20)
 
 ### LAB_VALUE
 
-- slightly (Score: 0.36)
-- elevated (Score: 0.38)
+- slightly elevated (Score: 0.38)
 
 ### THERAPEUTIC_PROCEDURE
 
